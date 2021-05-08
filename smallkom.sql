@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2019 at 06:59 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.2.17
+-- Waktu pembuatan: 08 Bulan Mei 2021 pada 11.48
+-- Versi server: 10.4.13-MariaDB
+-- Versi PHP: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alat`
+-- Struktur dari tabel `alat`
 --
 
 CREATE TABLE `alat` (
@@ -36,7 +35,7 @@ CREATE TABLE `alat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `alat`
+-- Dumping data untuk tabel `alat`
 --
 
 INSERT INTO `alat` (`id_alat`, `id_ruangan`, `id_spesifikasi`, `kondisi`) VALUES
@@ -80,7 +79,7 @@ INSERT INTO `alat` (`id_alat`, `id_ruangan`, `id_spesifikasi`, `kondisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laboran`
+-- Struktur dari tabel `laboran`
 --
 
 CREATE TABLE `laboran` (
@@ -92,19 +91,19 @@ CREATE TABLE `laboran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `laboran`
+-- Dumping data untuk tabel `laboran`
 --
 
 INSERT INTO `laboran` (`id_laboran`, `password`, `id_ruangan`, `nama`, `kontak`) VALUES
-('14117098', 'eron', 'labgdc_2', 'Eron Wahyu', '0814117098'),
-('14117109', 'steven', 'labtek_1', 'Steven Hermadoni', '0814117109'),
-('14117132', 'danny', 'labtek_2', 'Christio Danny', '0814117132'),
-('14117141', 'ismail', 'labgdc_1', 'Ismail', '0814117141');
+('11814014', 'elkan', 'labgdc_1', 'Steven Elkan Hutauruk', '0818140149'),
+('11914006', 'putri', 'labtek_2', 'Putri Dwisastika Lumbantoruan', '0819140068'),
+('11914019', 'figo', 'labgdc_2', 'Orville Figo El Islami ', '0819140194'),
+('14117109', 'steven', 'labtek_1', 'Steven Hermadoni', '0814117109');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lapor`
+-- Struktur dari tabel `lapor`
 --
 
 CREATE TABLE `lapor` (
@@ -119,7 +118,7 @@ CREATE TABLE `lapor` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ruangan`
+-- Struktur dari tabel `ruangan`
 --
 
 CREATE TABLE `ruangan` (
@@ -129,19 +128,19 @@ CREATE TABLE `ruangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ruangan`
+-- Dumping data untuk tabel `ruangan`
 --
 
 INSERT INTO `ruangan` (`id_ruangan`, `id_laboran`, `nama_ruangan`) VALUES
-('labgdc_1', '14117141', 'Lab TPB Gedung C'),
-('labgdc_2', '14117098', 'Lab Prodi Gedung C'),
+('labgdc_1', '11814014', 'Lab TPB Gedung C'),
+('labgdc_2', '11914019', 'Lab Prodi Gedung C'),
 ('labtek_1', '14117109', 'Lab TPB LABTEK'),
-('labtek_2', '14117132', 'Lab Prodi LABTEK');
+('labtek_2', '11914006', 'Lab Prodi LABTEK');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spesifikasi`
+-- Struktur dari tabel `spesifikasi`
 --
 
 CREATE TABLE `spesifikasi` (
@@ -152,7 +151,7 @@ CREATE TABLE `spesifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `spesifikasi`
+-- Dumping data untuk tabel `spesifikasi`
 --
 
 INSERT INTO `spesifikasi` (`id_spesifikasi`, `jenis`, `merek`, `harga`) VALUES
@@ -168,7 +167,7 @@ INSERT INTO `spesifikasi` (`id_spesifikasi`, `jenis`, `merek`, `harga`) VALUES
 --
 
 --
--- Indexes for table `alat`
+-- Indeks untuk tabel `alat`
 --
 ALTER TABLE `alat`
   ADD PRIMARY KEY (`id_alat`),
@@ -176,14 +175,14 @@ ALTER TABLE `alat`
   ADD KEY `id_spesifikasi` (`id_spesifikasi`);
 
 --
--- Indexes for table `laboran`
+-- Indeks untuk tabel `laboran`
 --
 ALTER TABLE `laboran`
   ADD PRIMARY KEY (`id_laboran`),
   ADD KEY `id_ruangan` (`id_ruangan`);
 
 --
--- Indexes for table `lapor`
+-- Indeks untuk tabel `lapor`
 --
 ALTER TABLE `lapor`
   ADD PRIMARY KEY (`no_laporan`),
@@ -191,44 +190,44 @@ ALTER TABLE `lapor`
   ADD KEY `id_ruangan` (`id_ruangan`);
 
 --
--- Indexes for table `ruangan`
+-- Indeks untuk tabel `ruangan`
 --
 ALTER TABLE `ruangan`
   ADD PRIMARY KEY (`id_ruangan`),
   ADD KEY `id_laboran` (`id_laboran`);
 
 --
--- Indexes for table `spesifikasi`
+-- Indeks untuk tabel `spesifikasi`
 --
 ALTER TABLE `spesifikasi`
   ADD PRIMARY KEY (`id_spesifikasi`);
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `alat`
+-- Ketidakleluasaan untuk tabel `alat`
 --
 ALTER TABLE `alat`
   ADD CONSTRAINT `alat_ibfk_1` FOREIGN KEY (`id_spesifikasi`) REFERENCES `spesifikasi` (`id_spesifikasi`),
   ADD CONSTRAINT `alat_ibfk_2` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`);
 
 --
--- Constraints for table `laboran`
+-- Ketidakleluasaan untuk tabel `laboran`
 --
 ALTER TABLE `laboran`
   ADD CONSTRAINT `laboran_ibfk_1` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`);
 
 --
--- Constraints for table `lapor`
+-- Ketidakleluasaan untuk tabel `lapor`
 --
 ALTER TABLE `lapor`
   ADD CONSTRAINT `lapor_ibfk_1` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`),
   ADD CONSTRAINT `lapor_ibfk_2` FOREIGN KEY (`id_alat`) REFERENCES `alat` (`id_alat`);
 
 --
--- Constraints for table `ruangan`
+-- Ketidakleluasaan untuk tabel `ruangan`
 --
 ALTER TABLE `ruangan`
   ADD CONSTRAINT `ruangan_ibfk_1` FOREIGN KEY (`id_laboran`) REFERENCES `laboran` (`id_laboran`);
