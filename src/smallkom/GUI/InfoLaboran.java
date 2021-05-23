@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author LAURENSIUS
+ * 
  */
 public class InfoLaboran extends javax.swing.JFrame {
 
