@@ -7,7 +7,7 @@ package smallkom.DataEntity;
 
 /**
  *
- * @author PORTAL
+ * 
  */
 public class Laboran extends User{
     public String nama, kontak, ruangan;
